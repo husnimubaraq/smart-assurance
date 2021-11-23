@@ -1,0 +1,19 @@
+{
+    "user_type_options": {
+        "ADMIN": {
+            "upline_user_options": []
+        },
+        "ROC": {
+            "upline_user_options": []
+        },
+        "TEAM LEADER": {
+            "upline_user_options": [
+                {
+                    "id": 2,
+                    "user_type": "ROC",
+                    "name": "Husni Husni"
+                }
+            ]
+        }
+    }
+}

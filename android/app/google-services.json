@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "815574693234",
+    "project_id": "smart-assurance-ef0c1",
+    "storage_bucket": "smart-assurance-ef0c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815574693234:android:babeaa302aac2f7a8c59eb",
+        "android_client_info": {
+          "package_name": "com.app.tracking.tracking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815574693234-jic90ejrcjsi9hfu47f2njpn9s6d8gch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.tracking.tracking",
+            "certificate_hash": "618ba51ef29a18235e263ecedb5f3d81a0d18483"
+          }
+        },
+        {
+          "client_id": "815574693234-kkpak1hu59bi0qsbol7p11nvd2li437r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.tracking.tracking",
+            "certificate_hash": "73aaa3ab38f499b87d94da2d69d09f335b98bc56"
+          }
+        },
+        {
+          "client_id": "815574693234-3fjhmqipgn4kk9gha9hdcicq7j8t7e0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCACkL18wvewCkS6kAM44jysoEYYpFoRm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815574693234-3fjhmqipgn4kk9gha9hdcicq7j8t7e0j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

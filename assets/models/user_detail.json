@@ -1,0 +1,33 @@
+{
+    "user": {
+        "id": 30,
+        "created_date": "2021-11-02 22:12:05",
+        "user_type": "TEKNISI",
+        "upline_user_id": 8,
+        "nik": "121212",
+        "name": "Husnayy",
+        "email": "husnayy",
+        "phone": "087946754679",
+        "username": "121212",
+        "status_active": "active",
+        "updated_date": "2021-11-02 22:12:05"
+    },
+    "manage": {
+        "presensi": {
+            "checkin": {
+                "status": "none",
+                "datetime": null
+            },
+            "checkout": {
+                "status": "none",
+                "datetime": null
+            }
+        },
+        "last_activities": {
+            "total_data": 0,
+            "current_page": 1,
+            "max_page": 1,
+            "lists": []
+        }
+    }
+}

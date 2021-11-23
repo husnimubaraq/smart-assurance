@@ -1,0 +1,70 @@
+{
+    "success": [
+        {
+            "id": 6,
+            "created_date": "2021-10-27 21:56:40",
+            "user_type": "TEKNISI",
+            "upline_user_id": 3,
+            "nik": "085696811484",
+            "name": "Agung Saputra",
+            "email": "agung@gmail.com",
+            "phone": "085696811484",
+            "username": "085696811484",
+            "status_active": "active",
+            "updated_date": "2021-10-27 21:56:40",
+            "status_presensi": "checkin",
+            "distance_location": 2,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-10-29 08:56:30\",\"longitude\":\"110.4059251\",\"latitude\":\"-7.7594291\"}}}"
+        },
+        {
+            "id": 25,
+            "created_date": "2021-10-29 22:50:37",
+            "user_type": "TEKNISI",
+            "upline_user_id": 3,
+            "nik": "975116",
+            "name": "Aditya",
+            "email": "aditya@gmail.com",
+            "phone": "975116",
+            "username": "975116",
+            "status_active": "active",
+            "updated_date": "2021-10-29 22:50:37",
+            "status_presensi": "checkin",
+            "distance_location": 0,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-11-01 09:06:12\",\"longitude\":\"110.2168559\",\"latitude\":\"-7.4759112\"}}}"
+        }
+    ],
+    "waiting": [
+        {
+            "id": 6,
+            "created_date": "2021-10-27 21:56:40",
+            "user_type": "TEKNISI",
+            "upline_user_id": 3,
+            "nik": "085696811484",
+            "name": "Agung Saputra",
+            "email": "agung@gmail.com",
+            "phone": "085696811484",
+            "username": "085696811484",
+            "status_active": "active",
+            "updated_date": "2021-10-27 21:56:40",
+            "status_presensi": "checkin",
+            "distance_location": 2,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-10-29 08:56:30\",\"longitude\":\"110.4059251\",\"latitude\":\"-7.7594291\"}}}"
+        },
+        {
+            "id": 25,
+            "created_date": "2021-10-29 22:50:37",
+            "user_type": "TEKNISI",
+            "upline_user_id": 3,
+            "nik": "975116",
+            "name": "Aditya",
+            "email": "aditya@gmail.com",
+            "phone": "975116",
+            "username": "975116",
+            "status_active": "active",
+            "updated_date": "2021-10-29 22:50:37",
+            "status_presensi": "checkin",
+            "distance_location": 0,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-11-01 09:06:12\",\"longitude\":\"110.2168559\",\"latitude\":\"-7.4759112\"}}}"
+        }
+    ]
+}

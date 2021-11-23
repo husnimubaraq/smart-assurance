@@ -1,0 +1,102 @@
+{
+    "checkin": [
+        {
+            "id": 6,
+            "created_date": "2021-10-27 21:56:40",
+            "user_type": "TEKNISI",
+            "upline_user_id": 3,
+            "nik": "085696811484",
+            "name": "Agung Saputra",
+            "email": "agung@gmail.com",
+            "phone": "085696811484",
+            "username": "085696811484",
+            "status_active": "active",
+            "updated_date": "2021-10-27 21:56:40",
+            "status_presensi": "checkin",
+            "distance_location": 2,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-10-29 08:56:30\",\"longitude\":\"110.4059251\",\"latitude\":\"-7.7594291\"}}}"
+        },
+        {
+            "id": 25,
+            "created_date": "2021-10-29 22:50:37",
+            "user_type": "TEKNISI",
+            "upline_user_id": 3,
+            "nik": "975116",
+            "name": "Aditya",
+            "email": "aditya@gmail.com",
+            "phone": "975116",
+            "username": "975116",
+            "status_active": "active",
+            "updated_date": "2021-10-29 22:50:37",
+            "status_presensi": "checkin",
+            "distance_location": 0,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-11-01 09:06:12\",\"longitude\":\"110.2168559\",\"latitude\":\"-7.4759112\"}}}"
+        }
+    ],
+    "waiting": [
+        {
+            "id": 4,
+            "created_date": "2021-10-16 14:52:19",
+            "user_type": "TEKNISI",
+            "upline_user_id": 3,
+            "nik": "082114605856",
+            "name": "Okky Datum",
+            "email": "okky@gmail.com",
+            "phone": "082114605856",
+            "username": "082114605856",
+            "status_active": "active",
+            "updated_date": "2021-10-20 12:02:56",
+            "status_presensi": "checkout",
+            "distance_location": 5,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-10-31 21:58:44\",\"longitude\":\"110.4049407\",\"latitude\":\"-7.7880383\"}}}"
+        },
+        {
+            "id": 26,
+            "created_date": "2021-10-29 22:54:35",
+            "user_type": "TEKNISI",
+            "upline_user_id": 8,
+            "nik": "12345",
+            "name": "Hus",
+            "email": "hus@gmail.com",
+            "phone": "082134510421",
+            "username": "12345",
+            "status_active": "active",
+            "updated_date": "2021-10-29 22:54:35",
+            "status_presensi": "checkout",
+            "distance_location": 7,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-11-01 21:29:53\",\"longitude\":\"110.3106843\",\"latitude\":\"-7.8396241\"}}}"
+        },
+        {
+            "id": 27,
+            "created_date": "2021-10-29 23:01:41",
+            "user_type": "TEKNISI",
+            "upline_user_id": 8,
+            "nik": "54321",
+            "name": "Husni Teknisi",
+            "email": "husniteknisi@gmail.com",
+            "phone": "0821345104554",
+            "username": "54321",
+            "status_active": "active",
+            "updated_date": "2021-10-29 23:01:41",
+            "status_presensi": "checkout",
+            "distance_location": 400,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-10-29 23:03:53\",\"longitude\":\"110.31069\",\"latitude\":\"-7.8396296\"}}}"
+        },
+        {
+            "id": 28,
+            "created_date": "2021-11-01 23:52:28",
+            "user_type": "TEKNISI",
+            "upline_user_id": 8,
+            "nik": "098765",
+            "name": "Husnei",
+            "email": "husnei@gmail.com",
+            "phone": "0876451377",
+            "username": "098765",
+            "status_active": "active",
+            "updated_date": "2021-11-01 23:52:28",
+            "status_presensi": "checkout",
+            "distance_location": 3,
+            "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-11-01 23:56:53\",\"longitude\":\"110.3106894\",\"latitude\":\"-7.8397088\"}}}"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "summary": {
+        "TEAM LEADER": 2,
+        "TEKNISI": 11
+    },
+    "list_team_leader": [
+        {
+            "id": 3,
+            "created_date": "2021-10-16 14:50:54",
+            "user_type": "TEAM LEADER",
+            "upline_user_id": 2,
+            "nik": "082133212342",
+            "name": "Aditya Aditya",
+            "email": "aditya@gmail.com",
+            "phone": "082133212342",
+            "username": "082133212342",
+            "status_active": "active",
+            "updated_date": "2021-10-16 14:52:15",
+            "status_presensi": null,
+            "distance_location": null,
+            "data_description": null
+        },
+        {
+            "id": 8,
+            "created_date": "2021-10-28 09:56:11",
+            "user_type": "TEAM LEADER",
+            "upline_user_id": null,
+            "nik": "08123456789",
+            "name": "Husni Lead",
+            "email": "husnileader@gmail.com",
+            "phone": "08123456789",
+            "username": "08123456789",
+            "status_active": "active",
+            "updated_date": "2021-11-03 23:25:24",
+            "status_presensi": null,
+            "distance_location": null,
+            "data_description": null
+        }
+    ]
+}
