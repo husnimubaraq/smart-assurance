@@ -1,14 +1,22 @@
 import 'package:tracking/app/data/models/user_model.dart';
 
+import 'notifications_model.dart';
+
 class UserTeknisiResponse {
   String? sessionId;
   User? user;
   Dashboard? dashboard;
   BaseUrl? baseUrl;
   Config? config;
+  App? app;
 
   UserTeknisiResponse(
-      {this.sessionId, this.baseUrl, this.config, this.user, this.dashboard});
+      {this.sessionId,
+      this.baseUrl,
+      this.config,
+      this.app,
+      this.user,
+      this.dashboard});
 
   UserTeknisiResponse.fromJson(Map<String, dynamic> json) {
     sessionId = json['session_id'];
@@ -20,6 +28,7 @@ class UserTeknisiResponse {
         json['base_url'] != null ? BaseUrl?.fromJson(json['base_url']) : null;
     this.config =
         json['config'] != null ? Config?.fromJson(json['config']) : null;
+    this.app = json['app'] != null ? App?.fromJson(json['app']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -33,6 +42,9 @@ class UserTeknisiResponse {
     }
     if (config != null) {
       data['config'] = config!.toJson();
+    }
+    if (app != null) {
+      data['app'] = app!.toJson();
     }
     if (baseUrl != null) {
       data['baseUrl'] = baseUrl!.toJson();
@@ -108,91 +120,21 @@ class Config {
   }
 }
 
-class Notifications {
-  int? totalData;
-  int? currentPage;
-  int? maxPage;
-  List<ListsNotification>? lists;
-  int? totalUnread;
+class App {
+  String? version;
+  String? urlDownload;
 
-  Notifications(
-      {this.totalData,
-      this.currentPage,
-      this.maxPage,
-      this.lists,
-      this.totalUnread});
+  App({this.version, this.urlDownload});
 
-  Notifications.fromJson(Map<String, dynamic> json) {
-    totalData = json['total_data'];
-    currentPage = json['current_page'];
-    maxPage = json['max_page'];
-    if (json['lists'] != null) {
-      lists = <ListsNotification>[];
-      json['lists'].forEach((v) {
-        lists!.add(ListsNotification.fromJson(v));
-      });
-    }
-    totalUnread = json['total_unread'];
+  App.fromJson(Map<String, dynamic> json) {
+    version = json['version'];
+    urlDownload = json['url_download'];
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['total_data'] = totalData;
-    data['current_page'] = currentPage;
-    data['max_page'] = maxPage;
-    if (lists != null) {
-      data['lists'] = lists!.map((v) => v.toJson()).toList();
-    }
-    data['total_unread'] = totalUnread;
-    return data;
-  }
-}
-
-class ListsNotification {
-  int? id;
-  String? createdDate;
-  int? userId;
-  String? type;
-  String? readStatus;
-  String? readDatetime;
-  String? title;
-  String? message;
-  dynamic targetUserId;
-
-  ListsNotification(
-      {this.id,
-      this.createdDate,
-      this.userId,
-      this.type,
-      this.readStatus,
-      this.readDatetime,
-      this.title,
-      this.message,
-      this.targetUserId});
-
-  ListsNotification.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    createdDate = json['created_date'];
-    userId = json['user_id'];
-    type = json['type'];
-    readStatus = json['read_status'];
-    readDatetime = json['read_datetime'];
-    title = json['title'];
-    message = json['message'];
-    targetUserId = json['target_user_id'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['id'] = id;
-    data['created_date'] = createdDate;
-    data['user_id'] = userId;
-    data['type'] = type;
-    data['read_status'] = readStatus;
-    data['read_datetime'] = readDatetime;
-    data['title'] = title;
-    data['message'] = message;
-    data['target_user_id'] = targetUserId;
+    data['version'] = version;
+    data['url_download'] = urlDownload;
     return data;
   }
 }

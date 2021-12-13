@@ -16,6 +16,14 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    String avatar = "avatar2.png";
+    if (_mainController.user.value.userType! == USER_ROC) {
+      avatar = "avatar4.png";
+    } else if (_mainController.user.value.userType! == USER_SM) {
+      avatar = "avatar5.png";
+    } else if (_mainController.user.value.userType! == USER_TEAMLEADER) {
+      avatar = "avatar.jpeg";
+    }
     return Scaffold(
         backgroundColor: kSnowColor,
         body: SafeArea(
@@ -48,7 +56,7 @@ class ProfileView extends GetView<ProfileController> {
                                     children: [
                                       CircleAvatar(
                                         backgroundImage: AssetImage(
-                                            'assets/images/avatar.jpeg'),
+                                            'assets/images/${avatar}'),
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(left: 10),

@@ -65,7 +65,7 @@ class ManageController extends GetxController {
     User? user = await Store.getUser();
     String? sessionId = await Store.getSessionId();
 
-    if (user?.userType == "ROC") {
+    if (user?.userType == "ROC" || user?.userType == "SM") {
       Map<String, String> body = <String, String>{
         'session_id': sessionId != null ? sessionId : ""
       };
@@ -73,7 +73,9 @@ class ManageController extends GetxController {
       ProviderException response = await GeneralrProvider().requestManage(body);
 
       if (response.status == "success") {
-        teamLeaderUsers.value = response.data.listTeamLeader;
+        if (response.data.listTeamLeader != null) {
+          teamLeaderUsers.value = response.data.listTeamLeader;
+        }
         summaryTeamLeader.value = response.data.summary.tEAMLEADER.toString();
         summaryTeknisi.value = response.data.summary.tEKNISI.toString();
       } else {}

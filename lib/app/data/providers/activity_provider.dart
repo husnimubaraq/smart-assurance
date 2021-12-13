@@ -1,15 +1,13 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:tracking/app/data/models/response_model.dart';
-import 'package:tracking/app/data/models/user_admin_response_model.dart';
-import 'package:tracking/app/data/models/user_roc_leader_response_model.dart';
+import 'package:tracking/app/controller/auth_controller.dart';
 import 'package:tracking/app/data/models/user_teknisi_response_model.dart';
-import 'package:tracking/app/helper/contants.dart';
 import 'provider.dart';
-import '../models/user_model.dart';
 
 class ActivityProvider extends Provider {
+  final AuthController authController = Get.find();
+
   Future<ProviderException> requestListAcivity(Map<String, String> body) async {
     String res = await this.getRequest("activities/list-activities", body);
 
@@ -17,6 +15,11 @@ class ActivityProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 
@@ -36,6 +39,11 @@ class ActivityProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     return ProviderException(
         message: response["message"], status: status, data: null);
   }
@@ -49,6 +57,11 @@ class ActivityProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 
@@ -68,6 +81,11 @@ class ActivityProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     return ProviderException(
         message: response["message"], status: status, data: null);
   }
@@ -79,6 +97,11 @@ class ActivityProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 

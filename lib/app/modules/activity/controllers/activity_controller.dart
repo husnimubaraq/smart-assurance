@@ -1,7 +1,9 @@
 import 'dart:isolate';
 import 'dart:ui';
 
+import 'package:background_location/background_location.dart';
 import 'package:background_locator/background_locator.dart';
+import 'package:background_locator/location_dto.dart';
 import 'package:background_locator/settings/android_settings.dart';
 import 'package:background_locator/settings/ios_settings.dart';
 import 'package:camera/camera.dart';
@@ -31,6 +33,9 @@ class ActivityController extends GetxController {
   var mainController = Get.put(MainController());
 
   ReceivePort port = ReceivePort();
+
+  LocationDto? lastLocation = null;
+  Location location = new Location();
 
   String latitude = 'waiting...';
   String longitude = 'waiting...';
@@ -91,6 +96,9 @@ class ActivityController extends GetxController {
 
     init();
 
+    var test = IsolateNameServer.lookupPortByName(
+        LocationServiceRepository.isolateName);
+
     if (IsolateNameServer.lookupPortByName(
             LocationServiceRepository.isolateName) !=
         null) {
@@ -104,11 +112,33 @@ class ActivityController extends GetxController {
     port.listen(
       (dynamic data) async {
         print("data: ${data}");
-        // await updateUI(data);
+        await updateUI(data);
       },
     );
-    initPlatformState();
+
     initCamera();
+  }
+
+  Future<void> updateUI(dynamic data) async {
+    // final log = await FileManager.readLogFile();
+    print("Log: ${data}");
+    await _updateNotificationText(data);
+
+    if (data != null) {
+      lastLocation = data;
+    }
+    // logStr = log;
+  }
+
+  Future<void> _updateNotificationText(dynamic data) async {
+    if (data == null) {
+      return;
+    }
+
+    await BackgroundLocator.updateNotificationText(
+        title: "Sedang mengirim lokasi",
+        msg: "${DateTime.now()}",
+        bigMsg: "${data.latitude}, ${data.longitude}");
   }
 
   void init() async {
@@ -119,11 +149,13 @@ class ActivityController extends GetxController {
       var status = await askPermission();
       if (status.isGranted) {
         print('true');
+        initPlatformState();
       }
     } else {
       print(await _checkLocationPermission());
       if (await _checkLocationPermission()) {
         print('true');
+        initPlatformState();
       }
     }
   }
@@ -172,15 +204,23 @@ class ActivityController extends GetxController {
   Future<void> initPlatformState() async {
     // logStr = await FileManager.readLogFile();
     print('Initialization done');
+    await BackgroundLocator.initialize();
+
     final _isRunning = await BackgroundLocator.isServiceRunning();
 
     print('Running ${_isRunning.toString()}');
 
     if (_isRunning == false) {
       var tracking = await Store.getIsTracking();
-      if (tracking == "start") {
+      if (mainController.dashboardTeknisi.value.presensi!.checkin!.status !=
+              "none" &&
+          mainController.dashboardTeknisi.value.presensi!.checkout!.status ==
+              "none") {
         await _startLocator();
       }
+      // if (tracking == "start") {
+      //   await _startLocator();
+      // }
     }
   }
 

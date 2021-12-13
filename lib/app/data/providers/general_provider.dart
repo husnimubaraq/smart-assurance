@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:tracking/app/controller/auth_controller.dart';
 import 'package:tracking/app/data/models/get_address_model.dart';
 import 'package:tracking/app/data/models/manage_model.dart';
 import 'package:tracking/app/data/models/response_model.dart';
@@ -14,6 +15,7 @@ import 'provider.dart';
 import '../models/user_model.dart';
 
 class GeneralrProvider extends Provider {
+  final AuthController authController = Get.find();
   Future<ProviderException> requestDashboard(Map<String, String> body) async {
     String res = await this.getRequest("general/dashboard", body);
 
@@ -21,6 +23,11 @@ class GeneralrProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 
@@ -33,6 +40,12 @@ class GeneralrProvider extends Provider {
           status: "success",
           data: UserTeknisiResponse.fromJson(response["data"]));
     } else if (userType == USER_ROC) {
+      // return UserRocLeaderResponse.fromJson(response["data"]);
+      return ProviderException(
+          message: "Success",
+          status: "success",
+          data: UserRocLeaderResponse.fromJson(response["data"]));
+    } else if (userType == USER_SM) {
       // return UserRocLeaderResponse.fromJson(response["data"]);
       return ProviderException(
           message: "Success",
@@ -82,10 +95,17 @@ class GeneralrProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     var results = <User>[];
-    response["data"].forEach((v) {
-      results.add(User.fromJson(v));
-    });
+    if (response["data"] != null) {
+      response["data"].forEach((v) {
+        results.add(User.fromJson(v));
+      });
+    }
 
     return ProviderException(message: "", status: "success", data: results);
   }
@@ -98,6 +118,11 @@ class GeneralrProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 
@@ -118,6 +143,11 @@ class GeneralrProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     return ProviderException(
         message: "",
         status: "success",
@@ -131,6 +161,11 @@ class GeneralrProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 

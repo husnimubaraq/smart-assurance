@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.app.tracking.tracking">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -11,8 +12,10 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
    <application
+        android:allowBackup="false"
         android:label="Smart Assurance"
         android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

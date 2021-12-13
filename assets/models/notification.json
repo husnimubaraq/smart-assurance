@@ -1,5 +1,62 @@
 {
-    "title":"Title",
-    "description":"Desc",
-    "date":"date"
+    "total_data": 5,
+    "current_page": 1,
+    "max_page": 1,
+    "lists": [
+        {
+            "id": 30,
+            "created_date": "2021-11-23 09:37:37",
+            "user_id": 2,
+            "type": "sender",
+            "read_status": "read",
+            "read_datetime": "2021-11-23 09:37:37",
+            "title": "Permintaan Upload Kegiatan",
+            "message": "Anda telah berhasil meminta Teknisi Aditya Telkom untuk mengaupload kegiatan yang sedang berlangsung",
+            "target_user_id": 25
+        },
+        {
+            "id": 28,
+            "created_date": "2021-11-23 09:37:36",
+            "user_id": 2,
+            "type": "sender",
+            "read_status": "read",
+            "read_datetime": "2021-11-23 09:37:36",
+            "title": "Permintaan Upload Kegiatan",
+            "message": "Anda telah berhasil meminta Teknisi Aditya Telkom untuk mengaupload kegiatan yang sedang berlangsung",
+            "target_user_id": 25
+        },
+        {
+            "id": 26,
+            "created_date": "2021-11-23 09:37:35",
+            "user_id": 2,
+            "type": "sender",
+            "read_status": "read",
+            "read_datetime": "2021-11-23 09:37:35",
+            "title": "Permintaan Upload Kegiatan",
+            "message": "Anda telah berhasil meminta Teknisi Aditya Telkom untuk mengaupload kegiatan yang sedang berlangsung",
+            "target_user_id": 25
+        },
+        {
+            "id": 14,
+            "created_date": "2021-11-13 08:37:18",
+            "user_id": 2,
+            "type": "sender",
+            "read_status": "read",
+            "read_datetime": "2021-11-13 08:37:18",
+            "title": "Permintaan Upload Kegiatan",
+            "message": "Anda telah berhasil meminta Teknisi Aditya Telkom untuk mengaupload kegiatan yang sedang berlangsung",
+            "target_user_id": 25
+        },
+        {
+            "id": 12,
+            "created_date": "2021-11-12 22:48:51",
+            "user_id": 2,
+            "type": "sender",
+            "read_status": "read",
+            "read_datetime": "2021-11-12 22:48:51",
+            "title": "Permintaan Upload Kegiatan",
+            "message": "Anda telah berhasil meminta Teknisi Hus untuk mengaupload kegiatan yang sedang berlangsung",
+            "target_user_id": 26
+        }
+    ]
 }

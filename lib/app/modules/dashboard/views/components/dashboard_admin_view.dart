@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:tracking/app/controller/auth_controller.dart';
+import 'package:tracking/app/helper/contants.dart';
 import 'package:tracking/app/helper/size_config.dart';
 import 'package:tracking/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:tracking/app/modules/dashboard/views/components/header_view.dart';
@@ -35,7 +36,7 @@ class DashboardAdminView extends GetView<DashboardController> {
                 type: _mainController.userPosition.value,
                 name: _controller.mainController.user.value.name!,
                 position: _mainController.userPosition.value,
-                avatar: 'assets/images/avatar2.png');
+                avatar: 'assets/images/avatar3.jpeg');
           }),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
@@ -53,6 +54,16 @@ class DashboardAdminView extends GetView<DashboardController> {
                   itemCount: _controller.usersTeknisi.length,
                   padding: EdgeInsets.only(top: 5, bottom: 150),
                   itemBuilder: (context, index) {
+                    String avatar = "avatar2.png";
+                    if (_controller.usersTeknisi[index].userType! == USER_ROC) {
+                      avatar = "avatar4.png";
+                    } else if (_controller.usersTeknisi[index].userType! ==
+                        USER_SM) {
+                      avatar = "avatar5.png";
+                    } else if (_controller.usersTeknisi[index].userType! ==
+                        USER_TEAMLEADER) {
+                      avatar = "avatar.jpeg";
+                    }
                     return UserItemView(
                         onTap: () {
                           // Get.toNamed(Routes.FORM_USER,
@@ -94,7 +105,7 @@ class DashboardAdminView extends GetView<DashboardController> {
                         },
                         name: _controller.usersTeknisi[index].name!,
                         position: _controller.usersTeknisi[index].userType!,
-                        avatar: "assets/images/avatar2.png");
+                        avatar: "assets/images/${avatar}");
                   });
             }),
             // child: Obx(() {

@@ -1,9 +1,12 @@
 import 'dart:convert';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
+// import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tracking/app/data/models/user_admin_response_model.dart';
 import 'package:tracking/app/data/models/user_model.dart';
@@ -17,6 +20,10 @@ import 'package:tracking/app/helper/contants.dart';
 import 'package:tracking/app/helper/store.dart';
 import 'package:tracking/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:tracking/app/modules/main/controllers/main_controller.dart';
+import 'package:tracking/app/routes/app_pages.dart';
+import 'package:tracking/components/info_app/info_app.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
 import 'auth_state.dart';
@@ -40,42 +47,91 @@ class AuthController extends GetxController {
     Store.saveToken(token!);
   }
 
-  initFcm() async {
+  Future<void> initFcm() async {
+    String? sessionId = await Store.getSessionId();
+
     FirebaseMessaging.instance.getToken().then(setToken);
 
-    FirebaseMessaging.instance
-        .getInitialMessage()
-        .then((RemoteMessage? message) {
-      if (message != null) {
-        print("message: ${message}");
-      }
-    });
+    // FirebaseMessaging.instance
+    //     .getInitialMessage()
+    //     .then((RemoteMessage? message) {
+    //   print("message2: ${message}");
+    //   if (message is RemoteMessage) {
+    //     if (sessionId != null) {
+    //       Get.toNamed(Routes.DETAIL_NOTIFICATION,
+    //           arguments: message.data["id"]);
+    //     }
+    //   }
+    // });
+
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+
+    // If the message also contains a data property with a "type" of "chat",
+    // navigate to a chat screen
+    if (initialMessage != null) {
+      _handleMessage(initialMessage);
+    }
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print('message');
+      print('message1');
+      dashboardController.fetchData('');
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       if (notification != null) {
-        flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                channel.id,
-                channel.name,
-                subText: channel.description,
-                // TODO add a proper drawable resource to android, for now using
-                //      one that already exists in example app.
-                icon: 'launch_background',
-              ),
-            ));
+        Get.snackbar(notification.title!, notification.body!,
+            colorText: kWhiteColor,
+            duration: Duration(seconds: 5),
+            icon: Icon(
+              Icons.notifications_active_rounded,
+              color: kWhiteColor,
+            ),
+            backgroundColor: kWarningColor, onTap: (msg) {
+          if (message is RemoteMessage) {
+            if (sessionId != null) {
+              Get.toNamed(Routes.DETAIL_NOTIFICATION,
+                  arguments: message.data["id"]);
+            }
+          }
+        });
+        if (message is RemoteMessage) {
+          if (sessionId != null) {
+            // Get.toNamed(Routes.DETAIL_NOTIFICATION, arguments: message.data["id"]);
+          }
+        }
       }
+
+      // if (notification != null) {
+      //   Get.snackbar(notification.title!, notification.body!);
+      //   // flutterLocalNotificationsPlugin.show(
+      //   //     notification.hashCode,
+      //   //     notification.title,
+      //   //     notification.body,
+      //   //     NotificationDetails(
+      //   //       android: AndroidNotificationDetails(
+      //   //         channel.id,
+      //   //         channel.name,
+      //   //         subText: channel.description,
+      //   //         // TODO add a proper drawable resource to android, for now using
+      //   //         //      one that already exists in example app.
+      //   //         // icon: 'launch_background',
+      //   //         icon: android?.smallIcon,
+      //   //       ),
+      //   //     ));
+      // }
     });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print('A new onMessageOpenedApp event was published!');
-    });
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+  }
+
+  void _handleMessage(RemoteMessage message) async {
+    String? sessionId = await Store.getSessionId();
+    print('message3: ');
+    if (message is RemoteMessage) {
+      if (sessionId != null) {
+        Get.toNamed(Routes.DETAIL_NOTIFICATION, arguments: message.data["id"]);
+      }
+    }
   }
 
   Future<ProviderException> requestLogin(Map<String, String> body) async {
@@ -104,12 +160,17 @@ class AuthController extends GetxController {
 
         sessionId = response.sessionId!;
         user = response.user;
+
+        mainController.notifActiveRoc.value =
+            response.dashboard!.notifications!.totalUnread!;
       } else if (response is UserTeknisiResponse) {
         mainController.dashboardTeknisi.value = response.dashboard!;
         ;
         mainController.cronjobLogLocationTime.value =
             response.config!.cronjobLogLocationTime!;
         mainController.baseUrl.value = response.baseUrl!.image!;
+        mainController.notifActiveTeknisi.value =
+            response.dashboard!.notifications!.totalUnread!;
 
         List<ListsActivity> last_activities =
             response.dashboard!.lastActivities!.lists!;
@@ -194,6 +255,8 @@ class AuthController extends GetxController {
             mainController.idleUsers.value = [];
           }
           mainController.dashboardRocLeader.value = response.data.dashboard;
+          mainController.notifActiveRoc.value =
+              response.data.dashboard.notifications!.totalUnread!;
         } else if (response.data is UserTeknisiResponse) {
           Map<String, String> body2 = <String, String>{
             'session_id': sessionId,
@@ -218,6 +281,11 @@ class AuthController extends GetxController {
           mainController.cronjobLogLocationTime.value =
               response.data.config.cronjobLogLocationTime;
           mainController.baseUrl.value = response.data.baseUrl.image;
+          if (response.data.dashboard.notifications != null &&
+              response.data.dashboard.notifications.totalUnread != null) {
+            mainController.notifActiveTeknisi.value =
+                response.data.dashboard.notifications.totalUnread!;
+          }
 
           List<ListsActivity> last_activities =
               response.data.dashboard.lastActivities.lists;
@@ -226,6 +294,18 @@ class AuthController extends GetxController {
               .where((ListsActivity activity) => activity.type! == "PRESENSI")
               .toList();
         }
+      }
+
+      PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+      if (response.data.app.version != packageInfo.version) {
+        Get.dialog(InfoApp(
+            title: "Smart Assurance",
+            descriptions: "descriptions",
+            onTap: () async {
+              await launch(response.data.app.urlDownload);
+            },
+            text: "text"));
       }
 
       mainController.userPosition.value = user.userType!;

@@ -15,8 +15,8 @@ class FormUserController extends GetxController {
   final DashboardController dashboardController = Get.find();
 
   final count = 0.obs;
-  var userType = ["Pilih Tipe User"].obs;
-  var userTypeValue = "Pilih Tipe User".obs;
+  var userType = <String>["ROC", "SM"].obs;
+  var userTypeValue = "ROC".obs;
 
   // late Future<List<UplineUserOptions>> uplines =
   //     Future<List<UplineUserOptions>>.delayed(
@@ -36,10 +36,10 @@ class FormUserController extends GetxController {
   //     UplineUserOptions(id: 0, name: "Pilih Upline", userType: "").obs;
 
   // var loading = true;
-  final Future<bool> loadingUserType =
-      Future<bool>.delayed(const Duration(seconds: 2), () => false);
-  final Future<bool> loadingUplines =
-      Future<bool>.delayed(const Duration(seconds: 2), () => false);
+  // final Future<bool> loadingUserType =
+  //     Future<bool>.delayed(const Duration(seconds: 2), () => false);
+  // final Future<bool> loadingUplines =
+  //     Future<bool>.delayed(const Duration(seconds: 2), () => false);
 
   late TextEditingController name;
   late TextEditingController nik;
@@ -57,50 +57,49 @@ class FormUserController extends GetxController {
   }
 
   void init() async {
-    String? sessionId = await Store.getSessionId();
-    Map<String, String> body = <String, String>{'session_id': sessionId!};
+    // String? sessionId = await Store.getSessionId();
+    // Map<String, String> body = <String, String>{'session_id': sessionId!};
 
-    var resPrepareUser = await UserProvider().requestCreatePrepare(body);
+    // var resPrepareUser = await UserProvider().requestCreatePrepare(body);
 
-    if (resPrepareUser.status == "success") {
-      UserCreatePrepare userCreatePrepare = resPrepareUser.data;
-      if (userCreatePrepare
-              .userTypeOptions!.tEAMLEADER!.uplineUserOptions!.length >
-          0) {
-        userType.add("TEAM LEADER");
-        uplineValue.value = uplines[0];
-        // var test = pos;
-        // positions.value = pos;
-        // update();
-      }
-    }
+    // if (resPrepareUser.status == "success") {
+    //   UserCreatePrepare userCreatePrepare = resPrepareUser.data;
+    //   if (userCreatePrepare.userTypeOptions!.sM!.uplineUserOptions!.length >
+    //       0) {
+    //     // userType.add("SM");
+    //     // uplineValue.value = uplines[0];
+    //     // var test = pos;
+    //     // positions.value = pos;
+    //     // update();
+    //   }
+    // }
   }
 
   void onChangeUserType(dynamic value) async {
     userTypeValue.value = value!;
-    if (value == "TEAM LEADER") {
-      String? sessionId = await Store.getSessionId();
-      Map<String, String> body = <String, String>{
-        'session_id': sessionId!,
-        "user_type": value,
-        "upline_user_id": "",
-        "keyword": "",
-        "page": ""
-      };
+    // if (value == "SM") {
+    //   String? sessionId = await Store.getSessionId();
+    //   Map<String, String> body = <String, String>{
+    //     'session_id': sessionId!,
+    //     "user_type": value,
+    //     "upline_user_id": "",
+    //     "keyword": "",
+    //     "page": ""
+    //   };
 
-      var resListUser = await UserProvider().requestList(body);
-      UsersList listUser = resListUser.data;
-      listUser.lists!.forEach((item) {
-        uplines.add(new UplineUserOptions(
-            id: item.id, name: item.name, userType: item.userType));
-      });
-    }
+    //   var resListUser = await UserProvider().requestList(body);
+    //   UsersList listUser = resListUser.data;
+    //   listUser.lists!.forEach((item) {
+    //     uplines.add(new UplineUserOptions(
+    //         id: item.id, name: item.name, userType: item.userType));
+    //   });
+    // }
   }
 
-  void onChangeUpline(dynamic value) {
-    uplineValue.value = value;
-    print(value.id);
-  }
+  // void onChangeUpline(dynamic value) {
+  //   uplineValue.value = value;
+  //   print(value.id);
+  // }
 
   void onSave() async {
     if (uplineValue.value.id == 0) {
@@ -114,8 +113,8 @@ class FormUserController extends GetxController {
     String? sessionId = await Store.getSessionId();
     Map<String, String> body = <String, String>{
       'session_id': sessionId!,
-      "user_type": "TEKNISI",
-      "upline_user_id": uplineValue.value.id.toString(),
+      "user_type": userTypeValue.value,
+      // "upline_user_id": uplineValue.value.id.toString(),
       "nik": nik.text,
       "name": name.text,
       "email": email.text,

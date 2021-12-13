@@ -260,16 +260,16 @@ class ActivityView extends GetView<ActivityController> {
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 15),
-                                    child: Text(
-                                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                                      style: TextStyle(
-                                          fontFamily: "Poppins",
-                                          fontSize: 12,
-                                          color: Colors.black45),
-                                    ),
-                                  ),
+                                  // Padding(
+                                  //   padding: EdgeInsets.only(left: 15),
+                                  //   child: Text(
+                                  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                                  //     style: TextStyle(
+                                  //         fontFamily: "Poppins",
+                                  //         fontSize: 12,
+                                  //         color: Colors.black45),
+                                  //   ),
+                                  // ),
                                   SizedBox(
                                     height: 10,
                                   ),
@@ -315,6 +315,12 @@ class ActivityView extends GetView<ActivityController> {
                                             .value
                                             .lastActivities!
                                             .lists![index]);
+                                    var test = _controller
+                                        .mainController
+                                        .dashboardTeknisi
+                                        .value
+                                        .lastActivities!
+                                        .lists![index];
                                   },
                                   location: _controller
                                       .mainController
@@ -330,37 +336,31 @@ class ActivityView extends GetView<ActivityController> {
                                       .lastActivities!
                                       .lists![index]
                                       .createdDate!,
-                                  status: _controller.mainController.dashboardTeknisi.value.lastActivities!.lists![index].category != null
-                                      ? _controller
-                                          .mainController
-                                          .dashboardTeknisi
-                                          .value
-                                          .lastActivities!
-                                          .lists![index]
-                                          .category
+                                  status: _controller.mainController.dashboardTeknisi.value.lastActivities!.lists![index].category !=
+                                          null
+                                      ? (_controller.mainController.dashboardTeknisi.value.lastActivities!.lists![index].category == "general" ||
+                                              _controller
+                                                      .mainController
+                                                      .dashboardTeknisi
+                                                      .value
+                                                      .lastActivities!
+                                                      .lists![index]
+                                                      .category ==
+                                                  "eskalasi")
+                                          ? ""
+                                          : _controller
+                                              .mainController
+                                              .dashboardTeknisi
+                                              .value
+                                              .lastActivities!
+                                              .lists![index]
+                                              .category
                                       : "",
-                                  description: _controller.mainController.dashboardTeknisi.value.lastActivities!.lists![index].type == "AKTIFITAS"
-                                      ? _controller
-                                          .mainController
-                                          .dashboardTeknisi
-                                          .value
-                                          .lastActivities!
-                                          .lists![index]
-                                          .catatan!
-                                      : _controller
-                                          .mainController
-                                          .dashboardTeknisi
-                                          .value
-                                          .lastActivities!
-                                          .lists![index]
-                                          .createdDate!,
-                                  activity: _controller
-                                      .mainController
-                                      .dashboardTeknisi
-                                      .value
-                                      .lastActivities!
-                                      .lists![index]
-                                      .type!);
+                                  description:
+                                      _controller.mainController.dashboardTeknisi.value.lastActivities!.lists![index].type == "AKTIFITAS"
+                                          ? _controller.mainController.dashboardTeknisi.value.lastActivities!.lists![index].catatan!
+                                          : _controller.mainController.dashboardTeknisi.value.lastActivities!.lists![index].createdDate!,
+                                  activity: _controller.mainController.dashboardTeknisi.value.lastActivities!.lists![index].type!);
                             }),
                           ));
                     }),

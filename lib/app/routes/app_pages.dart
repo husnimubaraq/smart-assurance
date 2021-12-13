@@ -12,11 +12,13 @@ import 'package:tracking/app/modules/activity/views/map_presence_view.dart';
 import 'package:tracking/app/modules/activity/views/upload_photo_view.dart';
 import 'package:tracking/app/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:tracking/app/modules/dashboard/bindings/dashboard_detail_teknisi_binding.dart';
+import 'package:tracking/app/modules/dashboard/bindings/detail_notification_binding.dart';
 import 'package:tracking/app/modules/dashboard/bindings/detail_summary_binding.dart';
 import 'package:tracking/app/modules/dashboard/bindings/form_user_binding.dart';
 import 'package:tracking/app/modules/dashboard/bindings/notification_binding.dart';
 import 'package:tracking/app/modules/dashboard/views/dashboard_detail_teknisi_view.dart';
 import 'package:tracking/app/modules/dashboard/views/dashboard_view.dart';
+import 'package:tracking/app/modules/dashboard/views/detail_notification_view.dart';
 import 'package:tracking/app/modules/dashboard/views/detail_summary_view.dart';
 import 'package:tracking/app/modules/dashboard/views/form_user_view.dart';
 import 'package:tracking/app/modules/dashboard/views/notification_view.dart';
@@ -74,10 +76,16 @@ class AppPages {
         binding: DashboardBinding(),
         children: [
           GetPage(
-            name: _Paths.NOTIFICATION,
-            page: () => NotificationView(),
-            binding: NotificationBinding(),
-          ),
+              name: _Paths.NOTIFICATION,
+              page: () => NotificationView(),
+              binding: NotificationBinding(),
+              children: [
+                GetPage(
+                  name: _Paths.DETAIL_NOTIFICATION,
+                  page: () => DetailNotificationView(),
+                  binding: DetailNotificationBinding(),
+                ),
+              ]),
           GetPage(
             name: _Paths.DETAIL_SUMMARY,
             page: () => DetailSummaryView(),

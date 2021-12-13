@@ -30,6 +30,8 @@ class DashboardTechnicianView extends GetView<DashboardController> {
             children: [
               Obx(() {
                 return HeaderView(
+                    notifActive:
+                        _controller.mainController.notifActiveTeknisi.value > 0,
                     type: _mainController.userPosition.value,
                     name: _controller.mainController.user.value.name!,
                     position: _mainController.userPosition.value,

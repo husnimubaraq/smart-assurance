@@ -140,7 +140,9 @@ class DetailActivityView extends GetView<DetailActivityController> {
                                             fontSize: 16,
                                             color: detail.category! == "checkin"
                                                 ? Colors.lightBlueAccent
-                                                : kDangerColor,
+                                                : detail.category! == "general"
+                                                    ? kSuccessColor
+                                                    : kDangerColor,
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ),

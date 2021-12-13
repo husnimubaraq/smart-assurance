@@ -9,6 +9,8 @@ abstract class Routes {
   static const MAIN = _Paths.MAIN;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const NOTIFICATION = _Paths.DASHBOARD + _Paths.NOTIFICATION;
+  static const DETAIL_NOTIFICATION =
+      _Paths.DASHBOARD + _Paths.NOTIFICATION + _Paths.DETAIL_NOTIFICATION;
   static const DETAIL_SUMMARY = _Paths.DASHBOARD + _Paths.DETAIL_SUMMARY;
   static const FORM_USER = _Paths.DASHBOARD + _Paths.FORM_USER;
   static const DASHBOARD_DETAIL_TEKNISI =
@@ -36,6 +38,7 @@ abstract class _Paths {
   static const DASHBOARD = '/dashboard';
   static const DASHBOARD_DETAIL_TEKNISI = '/dashboard-detail-teknisi';
   static const NOTIFICATION = '/notification';
+  static const DETAIL_NOTIFICATION = '/detail-notification';
   static const DETAIL_SUMMARY = '/detial-summary';
   static const FORM_USER = '/form-user';
   static const MANAGE = '/manage';

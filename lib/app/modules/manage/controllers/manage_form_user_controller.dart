@@ -33,7 +33,7 @@ class ManageFormUserController extends GetxController {
     String? sessionId = await Store.getSessionId();
     Map<String, String> body = <String, String>{
       'session_id': sessionId!,
-      "user_type": user!.userType == "ROC" ? "TEAM LEADER" : "TEKNISI",
+      "user_type": user!.userType == "SM" ? "TEAM LEADER" : "TEKNISI",
       "upline_user_id": user.id.toString(),
       "nik": nik.text,
       "name": name.text,

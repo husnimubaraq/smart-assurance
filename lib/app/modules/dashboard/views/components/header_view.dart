@@ -11,11 +11,13 @@ class HeaderView extends GetView {
       {required this.name,
       required this.position,
       required this.avatar,
+      this.notifActive = false,
       this.onLogout,
       this.type});
   final String name;
   final String position;
   final String avatar;
+  bool notifActive;
   String? type;
   Function()? onLogout;
 
@@ -43,7 +45,9 @@ class HeaderView extends GetView {
                       onPressed: () {
                         Get.toNamed(Routes.NOTIFICATION);
                       },
-                      icon: Icon(FeatherIcons.bell))
+                      icon: notifActive
+                          ? Icon(Icons.notifications_active_outlined)
+                          : Icon(Icons.notifications_none))
             ],
           ),
         ),

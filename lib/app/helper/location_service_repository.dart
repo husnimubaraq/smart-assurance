@@ -52,12 +52,6 @@ class LocationServiceRepository {
     send?.send(null);
   }
 
-  final String apiUrl = "https://reqres.in/api/users/1";
-  Future<dynamic> _fecthDataUsers() async {
-    var result = await http.get(Uri.parse(apiUrl));
-    return json.decode(result.body)['data'];
-  }
-
   Future<void> callback(LocationDto locationDto) async {
     // print('$_count location in dart: ${locationDto.toString()}');
 

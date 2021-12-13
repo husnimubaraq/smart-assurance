@@ -16,6 +16,9 @@ const kTextColor = Color(0xFF757575);
 const kWhiteColor = Color(0xFFFFFFFF);
 const kSnowColor = Color.fromRGBO(245, 250, 255, 1);
 
+const double padding = 20;
+const double avatarRadius = 45;
+
 const kAnimationDuration = Duration(milliseconds: 200);
 
 const String Authorization =
@@ -27,3 +30,4 @@ const USER_ADMIN = "ADMIN";
 const USER_ROC = "ROC";
 const USER_TEAMLEADER = "TEAM LEADER";
 const USER_TEKNISI = "TEKNISI";
+const USER_SM = "SM";

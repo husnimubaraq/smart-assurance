@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tracking/app/data/models/user_roc_leader_response_model.dart'
     as RocLeader;
 import 'package:tracking/app/data/models/user_roc_leader_response_model.dart';
+import 'package:tracking/app/helper/contants.dart';
 import 'package:tracking/app/helper/size_config.dart';
 import 'package:tracking/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:tracking/app/modules/dashboard/views/components/header_view.dart';
@@ -25,6 +26,15 @@ class DashboardRocView extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
+    String avatar = "avatar2.png";
+    if (_controller.mainController.user.value.userType! == USER_ROC) {
+      avatar = "avatar4.png";
+    } else if (_controller.mainController.user.value.userType! == USER_SM) {
+      avatar = "avatar5.png";
+    } else if (_controller.mainController.user.value.userType! ==
+        USER_TEAMLEADER) {
+      avatar = "avatar.jpeg";
+    }
     return Expanded(
       flex: 1,
       child: RefreshIndicator(
@@ -35,10 +45,12 @@ class DashboardRocView extends GetView<DashboardController> {
           children: [
             Obx(() {
               return HeaderView(
+                  notifActive:
+                      _controller.mainController.notifActiveRoc.value > 0,
                   type: _controller.mainController.userPosition.value,
                   name: _controller.mainController.user.value.name!,
                   position: _controller.mainController.userPosition.value,
-                  avatar: 'assets/images/avatar2.png');
+                  avatar: 'assets/images/${avatar}');
             }),
             SectionSummaryView(
               onTapDetail: () {
@@ -71,7 +83,7 @@ class DashboardRocView extends GetView<DashboardController> {
               height: 15,
             ),
             SectionListView(
-                label: "Teknisi Iddle",
+                label: "Teknisi Idle",
                 itemLength: _controller.mainController.idleUsers.value!.length,
                 child: Obx(() {
                   return Column(

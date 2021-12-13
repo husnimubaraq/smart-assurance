@@ -4,8 +4,9 @@ class UserAdminResponse {
   String? sessionId;
   User? user;
   Dashboard? dashboard;
+  App? app;
 
-  UserAdminResponse({this.sessionId, this.user, this.dashboard});
+  UserAdminResponse({this.sessionId, this.user, this.dashboard, this.app});
 
   UserAdminResponse.fromJson(Map<String, dynamic> json) {
     sessionId = json['session_id'];
@@ -13,6 +14,7 @@ class UserAdminResponse {
     dashboard = json['dashboard'] != null
         ? Dashboard?.fromJson(json['dashboard'])
         : null;
+    this.app = json['app'] != null ? App?.fromJson(json['app']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -23,6 +25,9 @@ class UserAdminResponse {
     }
     if (dashboard != null) {
       data['dashboard'] = dashboard!.toJson();
+    }
+    if (app != null) {
+      data['app'] = app!.toJson();
     }
     return data;
   }
@@ -49,6 +54,25 @@ class Dashboard {
     if (users != null) {
       data['users'] = users!.toJson();
     }
+    return data;
+  }
+}
+
+class App {
+  String? version;
+  String? urlDownload;
+
+  App({this.version, this.urlDownload});
+
+  App.fromJson(Map<String, dynamic> json) {
+    version = json['version'];
+    urlDownload = json['url_download'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['version'] = version;
+    data['url_download'] = urlDownload;
     return data;
   }
 }

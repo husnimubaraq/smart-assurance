@@ -60,103 +60,92 @@ class FormUserView extends GetView<FormUserController> {
                         ),
                         Expanded(
                           flex: 1,
-                          child: FutureBuilder<bool>(
-                              future: _controller.loadingUserType,
-                              builder: (BuildContext context,
-                                  AsyncSnapshot snapshot) {
-                                return Obx(() {
-                                  return DropdownView(
-                                      value: _controller.userTypeValue.value,
-                                      hint: "Pilih Tipe User",
-                                      onChange: _controller.onChangeUserType,
-                                      items: snapshot.hasData
-                                          ? _controller.userType
-                                              .map<DropdownMenuItem<dynamic>>(
-                                                  (dynamic value) =>
-                                                      DropdownMenuItem(
-                                                        value: value,
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  left: 15),
-                                                          child: Text(
-                                                            value,
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    "Poppins",
-                                                                fontSize: 12,
-                                                                color: Colors
-                                                                    .black87),
-                                                          ),
-                                                        ),
-                                                      ))
-                                              .toList()
-                                          : []);
-                                });
-                              }),
+                          child: Obx(() {
+                            return DropdownView(
+                                value: _controller.userTypeValue.value,
+                                hint: "Pilih Tipe User",
+                                onChange: _controller.onChangeUserType,
+                                items: _controller.userType.value
+                                    .map<DropdownMenuItem<String>>(
+                                        (String value) => DropdownMenuItem(
+                                              value: value,
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsets.only(left: 15),
+                                                child: Text(
+                                                  value,
+                                                  style: TextStyle(
+                                                      fontFamily: "Poppins",
+                                                      fontSize: 12,
+                                                      color: Colors.black87),
+                                                ),
+                                              ),
+                                            ))
+                                    .toList());
+                          }),
                         ),
                       ],
                     ),
                   ),
-                  Container(
-                    color: kWhiteColor,
-                    margin: EdgeInsets.only(left: 20, right: 20, bottom: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 15),
-                          child: Icon(
-                            Icons.people,
-                            size: 18,
-                            color: Colors.black45,
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: FutureBuilder<bool>(
-                              future: _controller.loadingUplines,
-                              builder: (BuildContext context,
-                                  AsyncSnapshot snapshot) {
-                                return Obx(() {
-                                  return DropdownView(
-                                      value:
-                                          _controller.uplineValue.value != null
-                                              ? _controller.uplineValue.value
-                                              : null,
-                                      hint: "Pilih Uplines",
-                                      onChange: _controller.onChangeUpline,
-                                      items: snapshot.hasData
-                                          ? _controller.uplines
-                                              .map<
-                                                      DropdownMenuItem<
-                                                          UplineUserOptions>>(
-                                                  (UplineUserOptions value) =>
-                                                      DropdownMenuItem(
-                                                        value: value,
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  left: 15),
-                                                          child: Text(
-                                                            value.name!,
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    "Poppins",
-                                                                fontSize: 12,
-                                                                color: Colors
-                                                                    .black87),
-                                                          ),
-                                                        ),
-                                                      ))
-                                              .toList()
-                                          : []);
-                                });
-                              }),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   color: kWhiteColor,
+                  //   margin: EdgeInsets.only(left: 20, right: 20, bottom: 15),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Padding(
+                  //         padding: EdgeInsets.only(left: 15),
+                  //         child: Icon(
+                  //           Icons.people,
+                  //           size: 18,
+                  //           color: Colors.black45,
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         flex: 1,
+                  //         child: FutureBuilder<bool>(
+                  //             future: _controller.loadingUplines,
+                  //             builder: (BuildContext context,
+                  //                 AsyncSnapshot snapshot) {
+                  //               return Obx(() {
+                  //                 return DropdownView(
+                  //                     value:
+                  //                         _controller.uplineValue.value != null
+                  //                             ? _controller.uplineValue.value
+                  //                             : null,
+                  //                     hint: "Pilih Uplines",
+                  //                     onChange: _controller.onChangeUpline,
+                  //                     items: snapshot.hasData
+                  //                         ? _controller.uplines
+                  //                             .map<
+                  //                                     DropdownMenuItem<
+                  //                                         UplineUserOptions>>(
+                  //                                 (UplineUserOptions value) =>
+                  //                                     DropdownMenuItem(
+                  //                                       value: value,
+                  //                                       child: Padding(
+                  //                                         padding:
+                  //                                             EdgeInsets.only(
+                  //                                                 left: 15),
+                  //                                         child: Text(
+                  //                                           value.name!,
+                  //                                           style: TextStyle(
+                  //                                               fontFamily:
+                  //                                                   "Poppins",
+                  //                                               fontSize: 12,
+                  //                                               color: Colors
+                  //                                                   .black87),
+                  //                                         ),
+                  //                                       ),
+                  //                                     ))
+                  //                             .toList()
+                  //                         : []);
+                  //               });
+                  //             }),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   // Container(
                   //   color: kWhiteColor,
                   //   margin: EdgeInsets.only(left: 20, right: 20, bottom: 15),

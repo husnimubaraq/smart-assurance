@@ -21,16 +21,14 @@ class UserCreatePrepare {
 class UserTypeOptions {
   ADMIN? aDMIN;
   ROC? rOC;
-  TEAMLEADER? tEAMLEADER;
+  SM? sM;
 
-  UserTypeOptions({this.aDMIN, this.rOC, this.tEAMLEADER});
+  UserTypeOptions({this.aDMIN, this.rOC, this.sM});
 
   UserTypeOptions.fromJson(Map<String, dynamic> json) {
     aDMIN = json['ADMIN'] != null ? ADMIN?.fromJson(json['ADMIN']) : null;
     rOC = json['ROC'] != null ? ROC?.fromJson(json['ROC']) : null;
-    tEAMLEADER = json['TEAM LEADER'] != null
-        ? TEAMLEADER?.fromJson(json['TEAM LEADER'])
-        : null;
+    sM = json['SM'] != null ? SM?.fromJson(json['SM']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -41,8 +39,8 @@ class UserTypeOptions {
     if (rOC != null) {
       data['ROC'] = rOC!.toJson();
     }
-    if (tEAMLEADER != null) {
-      data['TEAM LEADER'] = tEAMLEADER!.toJson();
+    if (sM != null) {
+      data['TEAM LEADER'] = sM!.toJson();
     }
     return data;
   }
@@ -72,12 +70,12 @@ class ADMIN {
   }
 }
 
-class TEAMLEADER {
+class SM {
   List<UplineUserOptions>? uplineUserOptions;
 
-  TEAMLEADER({this.uplineUserOptions});
+  SM({this.uplineUserOptions});
 
-  TEAMLEADER.fromJson(Map<String, dynamic> json) {
+  SM.fromJson(Map<String, dynamic> json) {
     if (json['upline_user_options'] != null) {
       uplineUserOptions = <UplineUserOptions>[];
       json['upline_user_options'].forEach((v) {

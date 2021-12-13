@@ -9,6 +9,7 @@ import 'package:tracking/app/helper/contants.dart';
 import 'package:tracking/app/helper/size_config.dart';
 import 'package:tracking/app/modules/activity/controllers/upload_photo_controller.dart';
 import 'package:tracking/components/button/button_view.dart';
+import 'package:tracking/components/dropdown/dropdown_view.dart';
 import 'package:tracking/components/header/header_view.dart';
 
 class UploadPhotoView extends GetView<UploadPhotoController> {
@@ -43,7 +44,7 @@ class UploadPhotoView extends GetView<UploadPhotoController> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 15, vertical: 15),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: kSnowColor,
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
@@ -51,7 +52,36 @@ class UploadPhotoView extends GetView<UploadPhotoController> {
                           ),
                           child: Column(
                             children: [
-                              Padding(
+                              Obx(() {
+                                return Container(
+                                  color: kWhiteColor,
+                                  child: DropdownView(
+                                      value: _controller.categoryValue.value,
+                                      hint: "Pilih Category",
+                                      onChange: _controller.onChangeCategory,
+                                      items: _controller.categories
+                                          .map<DropdownMenuItem<String>>((String
+                                                  value) =>
+                                              DropdownMenuItem(
+                                                value: value,
+                                                child: Container(
+                                                  padding:
+                                                      EdgeInsets.only(left: 10),
+                                                  child: Text(
+                                                    value,
+                                                    style: TextStyle(
+                                                        fontFamily: "Poppins",
+                                                        fontSize: 14,
+                                                        color: Colors.black87),
+                                                  ),
+                                                ),
+                                              ))
+                                          .toList()),
+                                );
+                              }),
+                              Container(
+                                margin: EdgeInsets.only(top: 10),
+                                color: kWhiteColor,
                                 padding: EdgeInsets.all(8.0),
                                 child: TextField(
                                   controller: _controller.catatan,

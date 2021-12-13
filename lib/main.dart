@@ -12,7 +12,7 @@ const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'smart_assurance', // id
     'Smart Assurance',
     description: "This channel is used for important notifications.",
-    importance: Importance.high,
+    importance: Importance.max,
     playSound: true);
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -36,8 +36,8 @@ void main() async {
       ?.createNotificationChannel(channel);
 
   await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-    alert: true,
-    badge: true,
+    // alert: true,
+    // badge: true,
     sound: true,
   );
 

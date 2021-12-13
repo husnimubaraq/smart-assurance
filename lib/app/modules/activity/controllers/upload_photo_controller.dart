@@ -21,6 +21,9 @@ class UploadPhotoController extends GetxController {
   late CameraController cameraController;
   late Future<void> initializeCameraControllerFuture;
   late TextEditingController catatan;
+
+  var categories = ["general", "eskalasi"].obs;
+  var categoryValue = "general".obs;
   // late CameraDescription cameraDescription;
 
   final count = 0.obs;
@@ -30,6 +33,10 @@ class UploadPhotoController extends GetxController {
   Location location = new Location();
   late LocationData locationData;
   String address = "";
+
+  void onChangeCategory(dynamic value) {
+    categoryValue.value = value;
+  }
 
   @override
   void onInit() {
@@ -103,11 +110,11 @@ class UploadPhotoController extends GetxController {
     String? sessionId = await Store.getSessionId();
     Map<String, String> body = <String, String>{
       'session_id': sessionId!,
-      "category": "checkout",
+      "category": categoryValue.value,
       "longitude": locationData.longitude.toString(),
       "latitude": locationData.latitude.toString(),
       "address": address,
-      "catatan": catatan.text
+      "catatan": catatan.text,
     };
 
     ProviderException responseAddPresence = await ActivityProvider()

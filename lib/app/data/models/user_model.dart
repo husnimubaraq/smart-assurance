@@ -17,6 +17,7 @@ class User {
   String? statusPresensi;
   int? distanceLocation;
   DataDescription? dataDescription;
+  String? uplineUserName;
 
   User(
       {this.id,
@@ -32,7 +33,8 @@ class User {
       this.updatedDate,
       this.statusPresensi,
       this.distanceLocation,
-      this.dataDescription});
+      this.dataDescription,
+      this.uplineUserName});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -51,6 +53,7 @@ class User {
     dataDescription = json['data_description'] != null
         ? DataDescription?.fromJson(jsonDecode(json['data_description']))
         : null;
+    uplineUserName = json['upline_user_name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -71,6 +74,7 @@ class User {
     if (dataDescription != null) {
       data['data_description'] = dataDescription!.toJson();
     }
+    data['upline_user_name'] = uplineUserName;
     return data;
   }
 }

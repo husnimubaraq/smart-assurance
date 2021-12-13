@@ -26,6 +26,9 @@ class MainController extends GetxController {
   final lastPresences = UserTerknisi.LastActivities().lists.obs;
   final lastLocations = UserTerknisi.LastActivities().lists.obs;
 
+  final notifActiveRoc = 0.obs;
+  final notifActiveTeknisi = 0.obs;
+
   var users = UserAdmin.Dashboard().users.obs;
 
   var baseUrl = "".obs;

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:tracking/app/controller/auth_controller.dart';
 import 'package:tracking/app/data/models/response_model.dart';
 import 'package:tracking/app/data/models/user_admin_response_model.dart';
 import 'package:tracking/app/data/models/user_create_prepare_model.dart';
@@ -13,6 +14,8 @@ import 'provider.dart';
 import '../models/user_model.dart';
 
 class UserProvider extends Provider {
+  final AuthController authController = Get.find();
+
   Future<dynamic> requestLogin(Map<String, String> body) async {
     String res = await this.getRequest("authentication/login", body);
 
@@ -23,11 +26,18 @@ class UserProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     String userType = response["data"]["user"]["user_type"];
 
     if (userType == USER_TEKNISI) {
       return UserTeknisiResponse.fromJson(response["data"]);
     } else if (userType == USER_ROC) {
+      return UserRocLeaderResponse.fromJson(response["data"]);
+    } else if (userType == USER_SM) {
       return UserRocLeaderResponse.fromJson(response["data"]);
     } else if (userType == USER_TEAMLEADER) {
       return UserRocLeaderResponse.fromJson(response["data"]);
@@ -48,6 +58,11 @@ class UserProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     return ProviderException(
         message: response["message"], status: status, data: null);
   }
@@ -60,6 +75,11 @@ class UserProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 
@@ -79,6 +99,11 @@ class UserProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     return ProviderException(
         message: "Success",
         status: status,
@@ -95,6 +120,11 @@ class UserProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     return ProviderException(
         message: response["message"], status: status, data: null);
   }
@@ -106,6 +136,11 @@ class UserProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 
@@ -124,6 +159,11 @@ class UserProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     return ProviderException(
         message: response["message"], status: status, data: null);
   }
@@ -135,6 +175,11 @@ class UserProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 
@@ -153,6 +198,11 @@ class UserProvider extends Provider {
       return ProviderException(message: response["message"], status: status);
     }
 
+    if (status == "error") {
+      authController.requestLogout();
+      return ProviderException(message: response["message"], status: status);
+    }
+
     return ProviderException(
         message: response["message"], status: status, data: null);
   }
@@ -165,6 +215,11 @@ class UserProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 
@@ -181,6 +236,11 @@ class UserProvider extends Provider {
     String status = response['status'];
 
     if (status == "failed") {
+      return ProviderException(message: response["message"], status: status);
+    }
+
+    if (status == "error") {
+      authController.requestLogout();
       return ProviderException(message: response["message"], status: status);
     }
 

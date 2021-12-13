@@ -57,16 +57,16 @@ class ButtonItemView extends GetView {
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 15),
-                    child: Text(
-                      description,
-                      style: TextStyle(
-                          fontFamily: "Poppins",
-                          fontSize: 12,
-                          color: Colors.black45),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(left: 15),
+                  //   child: Text(
+                  //     description,
+                  //     style: TextStyle(
+                  //         fontFamily: "Poppins",
+                  //         fontSize: 12,
+                  //         color: Colors.black45),
+                  //   ),
+                  // ),
                   SizedBox(
                     height: 10,
                   ),

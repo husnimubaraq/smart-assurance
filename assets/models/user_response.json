@@ -1,171 +1,55 @@
 {
-    "session_id": "202110216674I7LQSVA1JI59MOY6U7JBSEIUH6162914",
+    "session_id": "20211127L2NUNY6E0OBTQN6H9WNFOF3BN1SJOD103319",
     "user": {
-        "id": 4,
-        "created_date": "2021-10-16 14:52:19",
-        "user_type": "TEKNISI",
-        "upline_user_id": 3,
-        "nik": "082114605856",
-        "name": "Okky Datum",
-        "email": "okky@gmail.com",
-        "phone": "082114605856",
-        "username": "082114605856",
+        "id": 37,
+        "created_date": "2021-11-25 22:09:21",
+        "user_type": "SM",
+        "upline_user_id": null,
+        "nik": "081081",
+        "name": "SM Sample",
+        "email": "sm@gmail.com",
+        "phone": "081081",
+        "username": "081081",
         "status_active": "active",
-        "updated_date": "2021-10-20 12:02:56"
+        "updated_date": "2021-11-25 22:10:54"
     },
     "dashboard": {
         "notifications": {
-            "total_data": 1,
+            "total_data": 0,
             "current_page": 1,
             "max_page": 1,
-            "lists": [
-                {
-                    "id": 1,
-                    "created_date": "2021-10-19 23:34:00",
-                    "user_id": 4,
-                    "type": "receiver",
-                    "read_status": "unread",
-                    "read_datetime": "2021-10-20 10:55:39",
-                    "title": "TESTING",
-                    "message": "Halo Testing saja",
-                    "target_user_id": null
-                }
-            ],
-            "total_unread": 1
+            "lists": [],
+            "total_unread": 0
         },
-        "presensi": {
-            "checkin": {
-                "status": "none",
-                "datetime": null
+        "presence": {
+            "success": 0,
+            "waiting": 3
+        },
+        "online_status": {
+            "success": 0,
+            "waiting": 3
+        },
+        "idle_users": [
+            {
+                "id": 6,
+                "user_type": "TEKNISI",
+                "name": "Agung Saputra",
+                "distance_location": 2,
+                "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-10-29 08:56:30\",\"longitude\":\"110.4059251\",\"latitude\":\"-7.7594291\"}}}"
             },
-            "checkout": {
-                "status": "none",
-                "datetime": null
+            {
+                "id": 25,
+                "user_type": "TEKNISI",
+                "name": "Aditya Telkom",
+                "distance_location": 2,
+                "data_description": "{\"activites\":{\"location\":{\"created_date\":\"2021-11-14 15:17:03\",\"longitude\":\"110.4049833\",\"latitude\":\"-7.7881068\"}}}"
             }
-        },
-        "last_activities": {
-            "total_data": 9,
-            "current_page": 1,
-            "max_page": 1,
-            "lists": [
-                {
-                    "id": 10,
-                    "created_date": "2021-10-20 13:43:46",
-                    "user_id": 4,
-                    "type": "LOCATION",
-                    "category": null,
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": null,
-                    "catatan": null,
-                    "data_description": null
-                },
-                {
-                    "id": 9,
-                    "created_date": "2021-10-20 13:27:49",
-                    "user_id": 4,
-                    "type": "LOCATION",
-                    "category": null,
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": null,
-                    "catatan": null,
-                    "data_description": null
-                },
-                {
-                    "id": 8,
-                    "created_date": "2021-10-20 13:26:46",
-                    "user_id": 4,
-                    "type": "PRESENSI",
-                    "category": "checkin",
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": null,
-                    "catatan": null,
-                    "data_description": null
-                },
-                {
-                    "id": 7,
-                    "created_date": "2021-10-18 22:37:35",
-                    "user_id": 4,
-                    "type": "AKTIFITAS",
-                    "category": "",
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": "00004-20211018223735.png",
-                    "catatan": "Testing saja",
-                    "data_description": null
-                },
-                {
-                    "id": 6,
-                    "created_date": "2021-10-18 22:37:13",
-                    "user_id": 4,
-                    "type": "AKTIFITAS",
-                    "category": "",
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": "00004-20211018223713.png",
-                    "catatan": "Testing saja",
-                    "data_description": null
-                },
-                {
-                    "id": 5,
-                    "created_date": "2021-10-18 22:19:01",
-                    "user_id": 4,
-                    "type": "LOCATION",
-                    "category": "",
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": "",
-                    "catatan": "",
-                    "data_description": null
-                },
-                {
-                    "id": 4,
-                    "created_date": "2021-10-18 22:18:59",
-                    "user_id": 4,
-                    "type": "LOCATION",
-                    "category": "",
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": "",
-                    "catatan": "",
-                    "data_description": null
-                },
-                {
-                    "id": 3,
-                    "created_date": "2021-10-18 22:18:54",
-                    "user_id": 4,
-                    "type": "LOCATION",
-                    "category": "",
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": "",
-                    "catatan": "",
-                    "data_description": null
-                },
-                {
-                    "id": 1,
-                    "created_date": "2021-10-18 20:32:45",
-                    "user_id": 4,
-                    "type": "PRESENSI",
-                    "category": "checkin",
-                    "longitude": "110.3678006",
-                    "latitude": "-7.7595315",
-                    "address": "Jl Kemuning IV No.450 Perumnas Condongcatur",
-                    "image_url": "",
-                    "catatan": "",
-                    "data_description": null
-                }
-            ]
-        }
+        ]
+    },
+    "base_url": {
+        "image": "http://counterpulsa.com/location/FDM/public_html/asset/image/activity"
+    },
+    "config": {
+        "cronjob_log_location_time": 60
     }
 }

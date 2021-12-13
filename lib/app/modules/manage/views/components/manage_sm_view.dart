@@ -3,22 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tracking/app/helper/contants.dart';
 import 'package:tracking/app/helper/size_config.dart';
-import 'package:tracking/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:tracking/app/modules/dashboard/views/components/sub_tab_item_view.dart';
-import 'package:tracking/app/modules/dashboard/views/components/tab_item_view.dart';
 import 'package:tracking/app/modules/dashboard/views/components/user_item_view.dart';
 import 'package:tracking/app/modules/manage/controllers/manage_controller.dart';
 import 'package:tracking/app/routes/app_pages.dart';
 import 'package:tracking/components/button/button_item_view.dart';
-import 'package:tracking/components/input/input_default_view.dart';
 import 'package:tracking/components/section_list/section_list_view.dart';
-import 'package:tracking/components/technician_item/technician_location_item_view.dart';
-import 'package:tracking/components/technician_item/technician_presence_item_view.dart';
 
-class ManageRocView extends GetView<ManageController> {
+class ManageSmView extends GetView<ManageController> {
   var _controller = Get.put(ManageController());
 
-  ManageRocView();
+  ManageSmView();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +70,10 @@ class ManageRocView extends GetView<ManageController> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    _controller.summaryTeamLeader.value,
+                                    _controller.summaryTeamLeader.value !=
+                                            "null"
+                                        ? _controller.summaryTeamLeader.value
+                                        : "0",
                                     style: TextStyle(
                                         fontFamily: "Poppins",
                                         fontSize: 18,
@@ -163,12 +160,6 @@ class ManageRocView extends GetView<ManageController> {
                                 // Get.toNamed(Routes.FORM_USER,
                                 //     arguments: controller.rocUsers[index]);
                               },
-                              date: _controller.teamLeaderUsers[index]
-                                          .uplineUserName !=
-                                      null
-                                  ? _controller
-                                      .teamLeaderUsers[index].uplineUserName
-                                  : "",
                               name: _controller.teamLeaderUsers[index].name!,
                               position:
                                   _controller.teamLeaderUsers[index].email!,
@@ -176,6 +167,17 @@ class ManageRocView extends GetView<ManageController> {
                         }),
                       ));
                 }),
+                SizedBox(
+                  height: 15,
+                ),
+                ButtonItemView(
+                  label: "Tambah User",
+                  description:
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                  onTap: () {
+                    Get.toNamed(Routes.MANAGE_FORM_USER);
+                  },
+                ),
                 SizedBox(
                   height: 20,
                 ),

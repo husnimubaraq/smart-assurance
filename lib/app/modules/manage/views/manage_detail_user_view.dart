@@ -303,7 +303,7 @@ class ManageDetailUserView extends GetView<ManageDetailUserController> {
             ),
             Container(
               width: double.infinity,
-              height: 170,
+              height: 200,
               margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -462,6 +462,39 @@ class ManageDetailUserView extends GetView<ManageDetailUserController> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(right: 10),
+                                  child: Icon(FeatherIcons.user,
+                                      color: Colors.grey, size: 18),
+                                ),
+                                Text(
+                                  "Upline:",
+                                  style: TextStyle(
+                                      fontFamily: "Poppins",
+                                      fontSize: 12,
+                                      color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              user != null ? user.uplineUserName! : "",
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                          ],
+                        ),
+                      ),
                       SizedBox(
                         height: 15,
                       )
@@ -509,23 +542,34 @@ class ManageDetailUserView extends GetView<ManageDetailUserController> {
                           ),
                           Expanded(
                             flex: 1,
-                            child: ListView.builder(
-                                controller: scrollController,
-                                itemCount: _controller.teknisiUsers.length,
-                                itemBuilder: (context, index) {
-                                  return UserItemView(
-                                      onTap: () {
-                                        Get.toNamed(
-                                            Routes.DASHBOARD_DETAIL_TEKNISI,
-                                            arguments: _controller
-                                                .teknisiUsers[index]);
-                                      },
-                                      name:
-                                          _controller.teknisiUsers[index].name!,
-                                      position:
-                                          _controller.teknisiUsers[index].nik!,
-                                      avatar: "assets/images/avatar2.png");
-                                }),
+                            child: _controller.teknisiUsers.length > 0
+                                ? ListView.builder(
+                                    controller: scrollController,
+                                    itemCount: _controller.teknisiUsers.length,
+                                    itemBuilder: (context, index) {
+                                      return UserItemView(
+                                          onTap: () {
+                                            Get.toNamed(
+                                                Routes.DASHBOARD_DETAIL_TEKNISI,
+                                                arguments: _controller
+                                                    .teknisiUsers[index]);
+                                          },
+                                          name: _controller
+                                              .teknisiUsers[index].name!,
+                                          position: _controller
+                                              .teknisiUsers[index].nik!,
+                                          avatar: "assets/images/avatar2.png");
+                                    })
+                                : Padding(
+                                    padding: EdgeInsets.only(left: 15),
+                                    child: Text("Tidak ada data",
+                                        style: TextStyle(
+                                          fontFamily: "Poppins",
+                                          fontSize: 14,
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.w500,
+                                        )),
+                                  ),
                           ),
                         ],
                       ),

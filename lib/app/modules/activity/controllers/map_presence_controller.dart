@@ -165,11 +165,11 @@ class MapPresenceController extends GetxController {
   void onStopLocator() async {
     showDialog();
 
-    await BackgroundLocator.unRegisterLocationUpdate();
-    final _isRunning = await BackgroundLocator.isServiceRunning();
-    isRunning = _isRunning;
+    // await BackgroundLocator.unRegisterLocationUpdate();
+    // final _isRunning = await BackgroundLocator.isServiceRunning();
+    // isRunning = _isRunning;
 
-    Store.saveIsTracking("stop");
+    // Store.saveIsTracking("stop");
 
     // Future.delayed(Duration(seconds: 3), () => Get.back());
 
@@ -198,6 +198,12 @@ class MapPresenceController extends GetxController {
             backgroundColor: kDangerColor,
             toastLength: Toast.LENGTH_LONG);
       } else {
+        await BackgroundLocator.unRegisterLocationUpdate();
+        final _isRunning = await BackgroundLocator.isServiceRunning();
+        isRunning = _isRunning;
+
+        Store.saveIsTracking("stop");
+
         Fluttertoast.showToast(
             msg: responseAddPresence.message,
             gravity: ToastGravity.BOTTOM,
@@ -247,13 +253,13 @@ class MapPresenceController extends GetxController {
   void onStartLocator() async {
     if (await _checkLocationPermission()) {
       showDialog();
-      await _startLocator();
-      final _isRunning = await BackgroundLocator.isServiceRunning();
-      print("runnings: ${_isRunning}");
+      // await _startLocator();
+      // final _isRunning = await BackgroundLocator.isServiceRunning();
+      // print("runnings: ${_isRunning}");
 
-      isRunning = _isRunning;
+      // isRunning = _isRunning;
 
-      Store.saveIsTracking("start");
+      // Store.saveIsTracking("start");
 
       var locationResponse = await location.getLocation();
 
@@ -280,8 +286,11 @@ class MapPresenceController extends GetxController {
               backgroundColor: kDangerColor,
               toastLength: Toast.LENGTH_LONG);
         } else {
+          await _startLocator();
           final _isRunning = await BackgroundLocator.isServiceRunning();
           print("runnings: ${_isRunning}");
+
+          Store.saveIsTracking("start");
 
           isRunning = _isRunning;
           lastLocation = null;
