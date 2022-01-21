@@ -71,7 +71,7 @@ class GeneralrProvider extends Provider {
   Future<List<GetAddress>> requestGetAddress(
       double latitude, double longitude) async {
     var response = await get(
-        'https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude}, ${longitude}&key=AIzaSyDzt0bvtajSnqc_TJntL8gynPuMl8vlreI&language=ID');
+        'https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude}, ${longitude}&key=AIzaSyCGO2ORkn1GJgPIZBcT1HuOQ-r7bu9ZMD8&language=ID');
 
     String status = response.body["status"];
     if (status == "OK") {
